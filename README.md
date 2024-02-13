@@ -1,5 +1,5 @@
-# Brain-Stroke-prediction-model-using-ml
-Mini Project
+# Healthcare management system
+Main Project
 
 ![Screenshot (216)](https://github.com/Nihal014/Healthcare-mangement-system-ml-open-ai-api-emailjs-/assets/95294868/7eb624ea-854e-4092-8f02-910f385aad40)
 ![Screenshot (217)](https://github.com/Nihal014/Healthcare-mangement-system-ml-open-ai-api-emailjs-/assets/95294868/80bd11b2-c3e3-49f0-a61f-92713680427d)
