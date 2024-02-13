@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Netflix-like Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-image: url('/static/images/bg1.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .navbar {
+      background-color: #000 !important;
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #e50914 !important; /* Netflix red */
+    }
+    .footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .video-row {
+      margin-bottom: 30px;
+    }
+    .video-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e50914; /* Netflix red */
+    }
+    .video-container {
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin; /* For Firefox */
+    }
+    .video-container::-webkit-scrollbar {
+      width: 10px;
+    }
+    .video-container::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+    }
+    .video-container::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    .video-card {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      margin-right: 20px;
+      width: 300px; /* Adjust as needed */
+    }
+    .video-card video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .video-overlay:hover {
+      opacity: 1;
+    }
+    .video-title-overlay {
+      font-size: 1.5rem;
+      color: #e50914; /* Netflix red */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Netflix-like Page</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">TV Shows</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My List</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <!-- Video Rows -->
+    <div class="row video-row">
+      <div class="col-12">
+        <h2 class="video-title">Action Movies</h2>
+        <div class="video-container">
+          <!-- Video Cards -->
+          <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+            <video preload="none" controls>
+              <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay" onclick="togglePlayPause(this)">
+              <h2 class="video-title-overlay">Video Title 1</h2>
+            </div>
+          </div>
+          <!-- Add more video cards as needed -->
+        </div>
+      </div>
+    </div><div class="row video-row">
+        <div class="col-12">
+          <h2 class="video-title">Action Movies</h2>
+          <div class="video-container">
+            <!-- Video Cards -->
+            <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div>
+            <!-- Add more video cards as needed -->
+          </div>
+        </div>
+      </div><div class="row video-row">
+        <div class="col-12">
+          <h2 class="video-title">Action Movies</h2>
+          <div class="video-container">
+            <!-- Video Cards -->
+            <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div>
+            <!-- Add more video cards as needed -->
+          </div>
+        </div>
+      </div><div class="row video-row">
+        <div class="col-12">
+          <h2 class="video-title">Action Movies</h2>
+          <div class="video-container">
+            <!-- Video Cards -->
+            <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div>
+            <!-- Add more video cards as needed -->
+          </div>
+        </div>
+      </div><div class="row video-row">
+        <div class="col-12">
+          <h2 class="video-title">Action Movies</h2>
+          <div class="video-container">
+            <!-- Video Cards -->
+            <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div>
+            <!-- Add more video cards as needed -->
+          </div>
+        </div>
+      </div><div class="row video-row">
+        <div class="col-12">
+          <h2 class="video-title">Action Movies</h2>
+          <div class="video-container">
+            <!-- Video Cards -->
+            <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div>
+            <!-- Add more video cards as needed -->
+          </div>
+        </div>
+      </div><div class="row video-row">
+        <div class="col-12">
+          <h2 class="video-title">Action Movies</h2>
+          <div class="video-container">
+            <!-- Video Cards -->
+            <div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div><div class="video-card" ondblclick="openFullscreen('/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4')">
+              <video preload="none" controls>
+                <source src="/static/vedios/Post-Stroke Exercises (Part 2_ Lower Limb).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay" onclick="togglePlayPause(this)">
+                <h2 class="video-title-overlay">Video Title 1</h2>
+              </div>
+            </div>
+            <!-- Add more video cards as needed -->
+          </div>
+        </div>
+      </div>
+    <!-- Add more rows as needed -->
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 My Netflix-like Page. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and dependencies (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <script>
+    function togglePlayPause(element) {
+      var video = element.parentElement.querySelector('video');
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    function openFullscreen(url) {
+      var newTab = window.open(url, '_blank');
+      if (newTab) {
+        newTab.document.getElementsByTagName('video')[0].setAttribute('controls', '');
+        newTab.document.getElementsByTagName('video')[0].setAttribute('autoplay', '');
+        newTab.document.getElementsByTagName('video')[0].setAttribute('style', 'width:100%; height:100%;');
+      }
+    }
+  </script>
+</body>
+</html>

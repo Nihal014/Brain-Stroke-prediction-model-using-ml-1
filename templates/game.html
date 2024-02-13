@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifestyle Diseases Awareness Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-image: url('static/images/pexels-anastasia-belousova-9618221.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header, footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px 0;
+    }
+    #quiz-container {
+      max-width: 600px;
+      margin: auto;
+      flex-grow: 1;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+    }
+    #question {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    #options {
+      display: flex;
+      flex-direction: column;
+    }
+    .option {
+      margin: 5px;
+      padding: 10px;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Health Awareness Quiz</h1>
+</header>
+
+<div id="quiz-container">
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="result"></div>
+  <button onclick="nextQuestion()">Next Question</button>
+</div>
+
+<footer>
+  <p>Health is Wealth</p>
+</footer>
+
+<script>
+  const questions = [
+    {
+      question: "Which of the following is a lifestyle disease?",
+      options: ["Common Cold", "Type 2 Diabetes", "Malaria", "Appendicitis"],
+      correctAnswer: "Type 2 Diabetes",
+      explanation: "Type 2 diabetes is a chronic condition that affects the way your body metabolizes sugar."
+    },
+    {
+      question: "How many hours of sleep is recommended for adults each night?",
+      options: ["4-6 hours", "7-9 hours", "10-12 hours", "2-3 hours"],
+      correctAnswer: "7-9 hours",
+      explanation: "Most adults need 7-9 hours of sleep per night for optimal health."
+    },
+    {
+      question: "Regular exercise can help prevent which of the following conditions?",
+      options: ["Obesity", "Heart Disease", "Both A and B", "None of the above"],
+      correctAnswer: "Both A and B",
+      explanation: "Regular exercise can help prevent obesity and heart disease."
+    },
+    {
+      question: "What is the recommended daily intake of water for adults?",
+      options: ["1 liter", "2 liters", "3 liters", "4 liters"],
+      correctAnswer: "2 liters",
+      explanation: "The recommended daily intake of water for adults is around 2 liters."
+    },
+    {
+      question: "Which nutrient is essential for strong bones and teeth?",
+      options: ["Protein", "Calcium", "Vitamin C", "Iron"],
+      correctAnswer: "Calcium",
+      explanation: "Calcium is essential for the development and maintenance of strong bones and teeth."
+    },
+    {
+      question: "What is the main cause of tooth decay?",
+      options: ["Sugar consumption", "Lack of brushing", "Genetics", "Too much fluoride"],
+      correctAnswer: "Sugar consumption",
+      explanation: "The main cause of tooth decay is consuming sugary foods and drinks."
+    },
+    {
+      question: "What is the leading cause of blindness in adults?",
+      options: ["Cataracts", "Glaucoma", "Diabetic retinopathy", "Macular degeneration"],
+      correctAnswer: "Diabetic retinopathy",
+      explanation: "Diabetic retinopathy is the leading cause of blindness in adults with diabetes."
+    },
+    {
+      question: "Which activity helps in reducing stress and improving mental health?",
+      options: ["Meditation", "Watching TV", "Eating fast food", "Playing video games"],
+      correctAnswer: "Meditation",
+      explanation: "Meditation is an activity that can help reduce stress and improve mental health."
+    },
+    {
+      question: "What is the normal range for blood pressure in adults?",
+      options: ["120/80 mmHg", "140/90 mmHg", "100/60 mmHg", "160/100 mmHg"],
+      correctAnswer: "120/80 mmHg",
+      explanation: "The normal range for blood pressure in adults is around 120/80 mmHg."
+    },
+    {
+      question: "Which organ is responsible for detoxifying the body?",
+      options: ["Liver", "Kidney", "Lung", "Stomach"],
+      correctAnswer: "Liver",
+      explanation: "The liver is responsible for detoxifying the body by processing toxins."
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let incorrectAnswers = [];
+
+  function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById('question').textContent = currentQuestion.question;
+
+    const optionsContainer = document.getElementById('options');
+    optionsContainer.innerHTML = "";
+
+    currentQuestion.options.forEach(option => {
+      const optionElement = document.createElement('div');
+      optionElement.className = 'option';
+      optionElement.textContent = option;
+      optionElement.addEventListener('click', () => checkAnswer(option));
+      optionsContainer.appendChild(optionElement);
+    });
+  }
+
+  function checkAnswer(selectedOption) {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (selectedOption === currentQuestion.correctAnswer) {
+      score++;
+    } else {
+      incorrectAnswers.push({
+        question: currentQuestion.question,
+        correctAnswer: currentQuestion.correctAnswer,
+        explanation: currentQuestion.explanation
+      });
+    }
+
+    if (currentQuestionIndex < questions.length - 1) {
+      document.getElementById('result').textContent = `Correct! Your current score is ${score}/${currentQuestionIndex + 1}`;
+    } else {
+      displayQuizResults();
+    }
+  }
+
+  function displayQuizResults() {
+    const quizContainer = document.getElementById('quiz-container');
+    quizContainer.innerHTML = `<h2>Quiz completed! Your final score is ${score}/${questions.length}</h2>`;
+
+    if (incorrectAnswers.length > 0) {
+      const incorrectAnswersContainer = document.createElement('div');
+      incorrectAnswersContainer.innerHTML = '<h3>Incorrect Answers:</h3>';
+      incorrectAnswers.forEach(answer => {
+        const answerElement = document.createElement('div');
+        answerElement.innerHTML = `<p><strong>Question:</strong> ${answer.question}</p>
+                                   <p><strong>Correct Answer:</strong> ${answer.correctAnswer}</p>
+                                   <p><strong>Explanation:</strong> ${answer.explanation}</p>`;
+        incorrectAnswersContainer.appendChild(answerElement);
+      });
+      quizContainer.appendChild(incorrectAnswersContainer);
+    }
+  }
+
+  function nextQuestion() {
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion();
+      document.getElementById('result').textContent = "";
+    }
+  }
+
+  // Initial display
+  displayQuestion();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('static/images/pexels-shvets-production-8899970.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+            background-color: rgba(128, 128, 128, 0.5); /* Greyish background with 50% transparency */
+        }
+
+        #instructions {
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px; /* Added padding */
+            font-size: 16px;
+            color: #fff;
+            background-color: #000; /* Black background */
+        }
+
+        #gameOver {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 24px;
+            color: rgba(75, 60, 91, 0.8); /* Red color with 80% transparency */
+            display: none;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+        }
+
+        .dialog-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #333;
+            z-index: 999;
+        }
+
+        .dialog-box button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <title>Snake Game</title>
+</head>
+<body>
+    <header>
+        <h1>Healthy Lifestyle Awareness Game</h1>
+    </header>
+
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <div id="instructions">
+        <p>Use arrow keys to control the snake.</p>
+        <p style="color: rgba(0, 255, 0, 0.8);">Green color represents healthy food (apple).</p>
+        <p style="color: rgba(255, 255, 0, 0.8);">Yellow color represents Junk. Always prefer healthy food!</p>
+    </div>
+
+    <div id="gameOver">
+        Game Over! <br>
+        <button onclick="resumeGame()">Resume Game</button>
+    </div>
+
+    <div class="dialog-box" id="resumeDialog">
+        <p>Do you want to resume the game?</p>
+        <button onclick="resumeGame()">Resume</button>
+        <button onclick="resetGame()">Restart</button>
+    </div>
+
+    <footer>
+        <p>© HealthCare live</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const gameOverMessage = document.getElementById('gameOver');
+            const resumeDialog = document.getElementById('resumeDialog');
+
+            const GRID_SIZE = 20;
+            const SNAKE_SIZE = 20;
+
+            let snake = [{ x: 10, y: 10 }];
+            let direction = 'right';
+            let food = { x: 5, y: 5 };
+            let alcohol = { x: 15, y: 15 };
+
+            function draw() {
+                // Clear the canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw the greyish background
+                ctx.fillStyle = 'rgba(128, 128, 128, 0.5)'; /* Greyish background with 50% transparency */
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw the snake
+                ctx.fillStyle = 'rgba(255, 0, 0, 0.8)'; // Red with 80% transparency
+                snake.forEach(segment => {
+                    ctx.fillRect(segment.x * GRID_SIZE, segment.y * GRID_SIZE, SNAKE_SIZE, SNAKE_SIZE);
+                });
+
+                // Draw the food (apple)
+                ctx.fillStyle = 'rgba(0, 255, 0, 0.8)'; // Green with 80% transparency
+                ctx.fillRect(food.x * GRID_SIZE, food.y * GRID_SIZE, SNAKE_SIZE, SNAKE_SIZE);
+
+                // Draw the alcohol (yellow)
+                ctx.fillStyle = 'rgba(255, 255, 0, 0.8)'; // Yellow with 80% transparency
+                ctx.fillRect(alcohol.x * GRID_SIZE, alcohol.y * GRID_SIZE, SNAKE_SIZE, SNAKE_SIZE);
+            }
+
+            function update() {
+                // Move the snake
+                let head = { ...snake[0] };
+                switch (direction) {
+                    case 'up':
+                        head.y -= 1;
+                        break;
+                    case 'down':
+                        head.y += 1;
+                        break;
+                    case 'left':
+                        head.x -= 1;
+                        break;
+                    case 'right':
+                        head.x += 1;
+                        break;
+                }
+
+                // Check for collisions with walls
+                if (head.x < 0 || head.x >= canvas.width / GRID_SIZE || head.y < 0 || head.y >= canvas.height / GRID_SIZE) {
+                    displayGameOverDialog();
+                    return;
+                }
+
+                // Check for collisions with itself
+                if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                    displayGameOverDialog();
+                    return;
+                }
+
+                // Check for collisions with food (apple)
+                if (head.x === food.x && head.y === food.y) {
+                    // Increase the length of the snake
+                    snake.unshift({ ...head });
+                    // Generate new food location
+                    generateFood();
+                } else if (head.x === alcohol.x && head.y === alcohol.y) {
+                    // Snake collided with alcohol, show "Game Over" message
+                    displayGameOverDialog();
+                } else {
+                    // Move the snake
+                    snake.unshift({ ...head });
+                    snake.pop();
+                }
+            }
+
+            function generateFood() {
+                food.x = Math.floor(Math.random() * (canvas.width / GRID_SIZE));
+                food.y = Math.floor(Math.random() * (canvas.height / GRID_SIZE));
+
+                // Generate new alcohol location
+                do {
+                    alcohol.x = Math.floor(Math.random() * (canvas.width / GRID_SIZE));
+                    alcohol.y = Math.floor(Math.random() * (canvas.height / GRID_SIZE));
+                } while (isOccupied(alcohol.x, alcohol.y));
+            }
+
+            function isOccupied(x, y) {
+                // Check if the given position is occupied by the snake or food
+                return snake.some(segment => segment.x === x && segment.y === y) ||
+                    (food.x === x && food.y === y);
+            }
+
+            function resetGame() {
+                snake = [{ x: 10, y: 10 }];
+                direction = 'right';
+                generateFood();
+                resumeDialog.style.display = 'none';
+            }
+
+            function displayGameOverDialog() {
+                resumeDialog.style.display = 'block';
+                clearInterval(gameInterval);
+            }
+
+            function resumeGame() {
+                resumeDialog.style.display = 'none';
+                gameInterval = setInterval(() => {
+                    update();
+                    draw();
+                }, 100);
+            }
+
+            document.addEventListener('keydown', (event) => {
+                switch (event.key) {
+                    case 'ArrowUp':
+                        direction = 'up';
+                        break;
+                    case 'ArrowDown':
+                        direction = 'down';
+                        break;
+                    case 'ArrowLeft':
+                        direction = 'left';
+                        break;
+                    case 'ArrowRight':
+                        direction = 'right';
+                        break;
+                }
+            });
+
+            let gameInterval = setInterval(() => {
+                update();
+                draw();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

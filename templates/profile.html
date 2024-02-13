@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="static\css\bootstrap.css">
+    <link rel="stylesheet" href="static\style.css">
+
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-warning fixed-top">
+        <div class="container-fluid" >
+          <a class="navbar-brand text-white fw-bold" href="#">Healthcare management system</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#carouselExampleCaptions">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#order">Services</a>
+              </li>
+              
+              <li class="nav-item">
+                <form action="{{ url_for('demomail') }}" method="get">
+                  <button type="submit" class="btn btn-warning">Contact</button>
+              </form>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!--carousel-->
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="cOne" src="static\images\male-radiologist-analyzing-mri-scan-results-patient-computer-monitor-control-room.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="carcol fw-bold ">𝔻𝕚𝕤𝕔𝕠𝕧𝕖𝕣 𝕒 ℍ𝕖𝕒𝕝𝕥𝕙𝕚𝕖𝕣 𝕐𝕠𝕦:</h3>
+              <p class="carcol fw-bold ">Start Today with Our Comprehensive Services</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="cTwo" src="static\images\young-man-feeling-sick-holding-his-chest-pain-while-drinking-tea-living-room.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="carcol fw-bold ">ℕ𝕒𝕧𝕚𝕘𝕒𝕥𝕚𝕟𝕘 𝕐𝕠𝕦𝕣 ℍ𝕖𝕒𝕝𝕥𝕙 𝕁𝕠𝕦𝕣𝕟𝕖𝕪</h3>
+              <p class="carcol fw-bold ">Expert Care Every Step of the Way</p>
+            </div>
+            
+          </div>
+          <div class="carousel-item">
+            <img class="cTwo" src="static\images\pexels-pixabay-263402.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="carcol fw-bold ">𝔸𝕧𝕒𝕚𝕝 𝕆𝕦𝕣 𝕊𝕦𝕡𝕠𝕣𝕥 𝔸𝕟𝕪𝕥𝕚𝕞𝕖</h3>
+              <p class="carcol fw-bold ">Leading the Way to Better Health</p>
+            </div>
+            
+          </div>
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <div class="container" id="order">
+      <h2 class="he2">Health is Wealth..</h2>
+        <div class="row" >
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem; height: 25rem;">
+                    <img src="static\images\pexels-ella-olsson-1640777.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Diet Recomemndations</h5>
+                      <p class="card-text text-success">Diet is the key to a healthy life</p>
+                      <form action="{{ url_for('dietindex') }}" method="get">
+                        <button type="submit" class="btn btn-warning">View</button>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem;height: 25rem;">
+                    <img class="scndim" src="static\images\full-shot-man-sitting-yoga-mat.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Exercise Plan</h5>
+                      <p class="card-text text-success">Workout plan </p>
+                      <form action="{{ url_for('video') }}" method="get">
+                        <button type="submit" class="btn btn-warning">View</button>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem;height: 25rem;">
+                    <img class="cardThree" src="static\images\headache-representation.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Stroke Risk Assessment</h5>
+                      <p class="card-text text-success">Analyse the risk of stroke based on your health parameters</p>
+                      <form action="{{ url_for('home') }}" method="post">
+                        <button type="submit" class="btn btn-warning">View</button>
+                    </form>
+                      
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem;height: 25rem;">
+                    <img  class="fourthimg" src="static\images\istockphoto-1459670415-1024x1024.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Chat-bot</h5>
+                      <p class="card-text text-succsess">Avail assisstance of our medicat chatbot</p>
+                      <form action="{{ url_for('chatbot') }}" method="get">
+                        <button type="submit" class="btn btn-warning">View</button>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem;height: 25rem;">
+                    <img class="gameimage" src="static\images\pexels-pixabay-256417.jpg  " class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Games</h5>
+                      <p class="card-text text-success">Health Awareness games for kids</p>
+                      <form action="{{ url_for('gameroute') }}" method="get">
+                        <button type="submit" class="btn btn-warning">View</button>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-4">
+                <div class="card text-center" style="width: 18rem;height: 25rem;">
+                    <img class="bookingimage" src="static\images\pexels-anna-tarazevich-7904480.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Booking</h5>
+                      <p class="card-text text-success">View ratings and booking information</p>
+                      <form action="{{ url_for('booking') }}" method="get">
+                        <button type="submit" class="btn btn-warning">View</button>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+      <div class="container text-center">
+        <span>&copy; 2024 Healthcare Management System</span>
+      </div>
+    </footer>
+    
+    <script src="static\js\bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

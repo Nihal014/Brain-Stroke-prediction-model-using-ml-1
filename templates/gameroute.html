@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Your Choice</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .jumbotron {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .health-quotes {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Select Your Choice</h1>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Game 1</h5>
+            <p class="card-text">Click to play Game 1</p>
+            <form action="{{ url_for('game') }}" method="get">
+              <button type="submit" class="btn btn-primary">Game1</button>
+          </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Game 2</h5>
+            <p class="card-text">Click to play Game 2</p>
+            <form action="{{ url_for('game2') }}" method="get">
+                <button type="submit" class="btn btn-primary">Game2</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health Awareness Quotes -->
+    <div class="health-quotes">
+      <h2>Health is Wealth</h2>
+      <blockquote class="blockquote">
+        <p class="mb-0">"Health is a state of complete physical, mental and social well-being, and not merely the absence of disease or infirmity." - World Health Organization</p>
+      </blockquote>
+      <blockquote class="blockquote">
+        <p class="mb-0">"The greatest wealth is health." - Virgil</p>
+      </blockquote>
+      <!-- Add more quotes as needed -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2024 Your Website Name</p>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

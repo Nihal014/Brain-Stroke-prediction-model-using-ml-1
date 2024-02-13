@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Chatbot</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #cover {
+      background: url('static/images/pexels-negative-space-48604.jpg') center/cover no-repeat;
+      width: 100vw;
+      height: 100vh;
+      text-align: center;
+      color: #fff;
+      padding: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #chat-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 500px;
+      max-width: 400px;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent background color */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    #chat-log {
+      height: 200px;
+      overflow-y: scroll;
+    }
+
+    #user-input {
+      margin-top: 10px;
+    }
+
+    #footer {
+      background-color: #ffc107;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cover">
+    <h1 class="display-4">Medical Chatbot</h1>
+  </div>
+
+  <div id="chat-container">
+    <div id="chat-log"></div>
+    <div id="user-input">
+      <input type="text" id="userMessage" class="form-control" placeholder="Type your medical question...">
+      <button onclick="sendMessage()" class="btn btn-primary mt-2">Send</button>
+    </div>
+  </div>
+
+  <div id="footer">
+    <p>&copy; 2024 Medical Chatbot</p>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const chatLog = document.getElementById('chat-log');
+    const userMessageInput = document.getElementById('userMessage');
+
+    function sendMessage() {
+      const userMessage = userMessageInput.value.trim();
+      if (userMessage !== '') {
+        appendMessage('You: ' + userMessage);
+        handleBotResponse(userMessage);
+        userMessageInput.value = '';
+      }
+    }
+
+    function appendMessage(message) {
+      const messageDiv = document.createElement('div');
+      messageDiv.textContent = message;
+      chatLog.appendChild(messageDiv);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function handleBotResponse(userMessage) {
+      const lowerCaseMessage = userMessage.toLowerCase();
+
+      switch (lowerCaseMessage) {
+      case 'what are the symptoms of covid-19?':
+        appendMessage('Chatbot: Common symptoms include fever, cough, and difficulty breathing. If you experience these, seek medical advice.');
+        break;
+
+      case 'how to prevent the flu?':
+        appendMessage('Chatbot: Get vaccinated, practice good hygiene, and avoid close contact with sick individuals.');
+        break;
+
+      case 'what is diabetes?':
+        appendMessage('Chatbot: Diabetes is a chronic condition that affects how your body processes blood sugar. Consult a healthcare professional for personalized advice.');
+        break;
+
+      case 'how to lower high blood pressure?':
+        appendMessage('Chatbot: Maintain a healthy diet, exercise regularly, limit alcohol intake, and manage stress to help lower high blood pressure.');
+        break;
+
+      case 'iam feeling down and unmotivated':
+        appendMessage('Chatbot: Im sorry to hear that youre feeling down and unmotivated. Its not uncommon to have days like this, but its important to remember that youre not alone, and there are things you can do to help lift your spirits. Here are a few suggestions:  1.Acknowledge your feelings 2.Reach out to someone');
+        break;
+
+      case 'is it normal to feel fatigued all the time?':
+        appendMessage('Chatbot: Persistent fatigue can have various causes. It\'s recommended to consult with a healthcare provider for proper evaluation and advice.');
+        break;
+
+      case 'what is the recommended daily water intake?':
+        appendMessage('Chatbot: The general recommendation is to drink about 8 cups (64 ounces) of water per day, but individual needs may vary.');
+        break;
+
+      case 'how to cope with stress?':
+        appendMessage('Chatbot: Strategies to cope with stress include exercise, deep breathing, meditation, and seeking support from friends or professionals.');
+        break;
+
+      case 'what is a healthy BMI range?':
+        appendMessage('Chatbot: A BMI between 18.5 and 24.9 is generally considered healthy. However, BMI has limitations, and it\'s essential to consider other factors.');
+        break;
+
+      case 'what is the best way to lose weight?':
+        appendMessage('Chatbot: A combination of a balanced diet and regular exercise is often recommended for healthy and sustainable weight loss.');
+        break;
+
+      case 'how to improve sleep quality?':
+        appendMessage('Chatbot: Maintain a consistent sleep schedule, create a comfortable sleep environment, and practice relaxation techniques to improve sleep quality.');
+        break;
+
+      case 'can you recommend a healthy diet plan?':
+        appendMessage('Chatbot: For personalized dietary advice, it\'s best to consult with a registered dietitian or healthcare professional.');
+        break;
+
+      case 'what are the early signs of heart disease?':
+        appendMessage('Chatbot: Early signs may include chest discomfort, shortness of breath, and fatigue. If you experience these, seek medical attention.');
+        break;
+
+      case 'how to manage arthritis pain?':
+        appendMessage('Chatbot: Consult with a healthcare professional for personalized advice on managing arthritis pain, which may include medications, physical therapy, and lifestyle changes.');
+        break;
+
+      case 'is it safe to take herbal supplements?':
+        appendMessage('Chatbot: It\'s important to consult with a healthcare provider before taking any herbal supplements, as they can interact with medications and have potential side effects.');
+        break;
+
+      case 'what is the recommended amount of exercise per week?':
+        appendMessage('Chatbot: Adults should aim for at least 150 minutes of moderate-intensity aerobic activity or 75 minutes of vigorous-intensity activity per week, along with muscle-strengthening activities.');
+        break;
+
+      case 'how to quit smoking?':
+        appendMessage('Chatbot: Quitting smoking is challenging, but support is available. Consider seeking help from a healthcare professional, support groups, or smoking cessation programs.');
+        break;
+
+      case 'what are the symptoms of depression?':
+        appendMessage('Chatbot: Symptoms may include persistent sadness, changes in appetite or sleep, fatigue, and loss of interest in activities. If you experience these, consult a mental health professional.');
+        break;
+
+      case 'how to prevent allergies?':
+        appendMessage('Chatbot: Reduce exposure to allergens, keep living spaces clean, and consider allergy medications under the guidance of a healthcare provider.');
+        break;
+ 
+        case 'what is the importance of vaccinations?':
+        appendMessage('Chatbot: Vaccinations are crucial for preventing various infectious diseases and protecting public health. Consult with your healthcare provider to ensure you are up-to-date on vaccinations.');
+        break;
+
+      case 'what is the best way to manage stress?':
+        appendMessage('Chatbot: Effective stress management includes regular exercise, relaxation techniques, maintaining a healthy lifestyle, and seeking support from friends or professionals.');
+        break;
+
+
+        default:
+          appendMessage('Chatbot: I\'m sorry, I didn\'t understand that medical question. Please consult with a healthcare professional for personalized advice.');
+      }
+    }
+  </script>
+
+</body>
+
+</html>

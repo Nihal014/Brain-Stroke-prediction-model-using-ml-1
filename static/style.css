@@ -1,0 +1,31 @@
+.cOne{
+    height: 700px;
+    width: 100vw;
+}
+.cTwo{
+    height: 700px;
+    width: 100vw;
+}
+.cThree{
+    height: 700px;
+    width: 100vw;
+}
+.cardThree{
+    height: 200px;
+}
+.gameimage{
+    height:180px ;
+}
+.bookingimage{
+    height: 180px;
+}
+.foot{
+    height: 20vh;
+}
+.carcol{
+    color: #ebe8df;
+    background-color: #212529;
+    width: 380px;
+    margin-left: 330px;
+    border-radius: 9px;
+}

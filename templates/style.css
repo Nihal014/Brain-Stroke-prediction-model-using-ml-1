@@ -1,0 +1,23 @@
+.sslide{
+    height: 500px;
+}
+.scndim{
+    height: 200px;
+}
+.thrdimg{
+    height: 200px;
+}
+.fifthimg{
+    height: 200px;
+}
+.sixthimg{
+    height: 200px;
+}
+html {
+    scroll-behavior: smooth;
+}
+.he2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

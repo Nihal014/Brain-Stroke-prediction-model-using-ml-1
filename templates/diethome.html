@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diet Plan</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styles here */
+    /* Set a background image */
+    body {
+      font-family: 'Roboto', sans-serif; /* Example of using Google Font */
+    }
+    .bg-cover {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.7) 100%), url('background-image.jpg') no-repeat;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    .intro-text {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .card-title {
+      color: #333;
+    }
+    .card-text {
+      color: #666;
+    }
+    .footer {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Diet Plan</a>
+      <!-- Add your navbar links here -->
+    </div>
+  </nav>
+
+  <!-- Carousel Slider -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Add your carousel items here -->
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="slider-image1.jpg" alt="First slide">
+        <!-- Add carousel caption if needed -->
+      </div>
+      <!-- Add more carousel items if needed -->
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="container-fluid bg-cover text-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="text-center mb-4">Welcome to our Diet Plan</h2>
+          <p class="intro-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet felis vitae urna luctus, at feugiat nulla fermentum.
+            Donec convallis efficitur enim, sit amet consectetur lorem tincidunt et. Nullam volutpat augue ac nibh hendrerit dignissim.
+            Vivamus vestibulum est eget nisi accumsan, sit amet fermentum nulla fringilla.
+          </p>
+          <!-- Add more text or sections if needed -->
+        </div>
+      </div>
+
+      <!-- Cards Section -->
+      <div class="row mt-5">
+        <!-- Card 1 -->
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card 1</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <!-- Add button or links if needed -->
+            </div>
+          </div>
+        </div>
+        <!-- Add more cards similarly -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer py-3">
+    <div class="container">
+      <span class="text-muted">© 2024 Diet Plan. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

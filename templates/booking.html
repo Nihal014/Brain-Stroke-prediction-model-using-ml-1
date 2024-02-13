@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Hospitals in Kerala</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light grey background */
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent white background for cards */
+            border-radius: 15px; /* Rounded corners for cards */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for cards */
+        }
+        .card-body {
+            padding: 20px; /* Padding inside card body */
+        }
+        .card-image {
+            background-size: cover; /* Make background image cover entire card */
+            border-radius: 15px 15px 0 0; /* Rounded corners only on top */
+            height: 200px; /* Height of the card image */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-primary text-white text-center py-4">
+        <h1>Top Hospitals in Kerala</h1>
+    </header>
+
+    <!-- Dropdown for selecting district -->
+    <div class="container mt-4">
+        <div class="form-group">
+            <label for="districtSelect">Select District:</label>
+            <select class="form-control" id="districtSelect">
+                <option value="Kozhikode">Kozhikode</option>
+                <option value="Kasaragod">Kasaragod</option>
+                <option value="Kannur">Kannur</option>
+                <option value="Wayanad">Wayanad</option>
+                
+                <option value="Malappuram">Malappuram</option>
+                <option value="Palakkad">Palakkad</option>
+                <option value="Thrissur">Thrissur</option>
+                <option value="Ernakulam">Ernakulam</option>
+                <option value="Idukki">Idukki</option>
+                <option value="Kottayam">Kottayam</option>
+                <option value="Alappuzha">Alappuzha</option>
+                <option value="Pathanamthitta">Pathanamthitta</option>
+                <option value="Kollam">Kollam</option>
+                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="container mt-4" id="results">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-4">
+        <p>&copy; 2024 Top Hospitals in Kerala</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script for handling district selection -->
+    <script>
+        // Function to fetch and display hospitals based on selected district
+        function fetchHospitals(district) {
+            // Here, you would make an AJAX request to fetch hospitals based on the selected district
+            // For simplicity, I'm just hardcoding the results
+
+            // Clear previous results
+            document.getElementById("results").innerHTML = "";
+
+            // Hardcoded hospital data (dummy data)
+            let hospitals = [];
+
+            // Populate hospitals based on the selected district
+            switch (district) {
+                // Add cases for other districts with hospital data
+                case "Kozhikode":
+                    hospitals = [
+                        { name: "Aster MIMS Hospital", rating: 4.5, type: "Public", address: "Mini Bypass Road, Opp Kovilakam Residency Govindapuram, Kozhikode", phone: "1234567890", hours: "Open 24 hours", review: "Good hospital", image: "/static/images/astermims.jpg", website: "https://www.astermims.com/", map: "https://www.google.com/maps/search/?api=1&query=Aster+MIMS+Hospital+Kozhikode" },
+                        { name: "Star Care Hospital , Kozhihoke", rating: 3.2, type: "Private", address: "NH Bypass Road, Near Thondayad Junction, Calicut", phone: "0987654321", hours: "Open 24 hours", review: "Excellent services", image: "/static/images/starcare.jpg" },
+                        { name: "Meitra Hospital", rating: 4.4, type: "Private", address: "Near PVS, Kozhikode", phone: "0987654321", hours: "Open 24 hours", review: "Excellent services", image: "/static/images/meitra.jpg" },
+                    ];
+                    break;
+                    case "Kasaragod":
+                    hospitals = [
+                        { name: "General Hospital Kasaragod", rating: 3.5, type: "Public", address: "Mini Bypass Road, Opp Kovilakam Residency Govindapuram, Kozhikode", phone: "1234567890", hours: "Open 24 hours", review: "Good hospital", image: "/static/images/kas1.jpg", website: "https://www.astermims.com/", map: "https://www.google.com/maps/search/?api=1&query=Aster+MIMS+Hospital+Kozhikode" },
+                        { name: "KIMS Sunrise Hospital , Kasaragod", rating: 4.2, type: "Private", address: "NH Bypass Road, Near Thondayad Junction, Calicut", phone: "0987654321", hours: "Open 24 hours", review: "Excellent services", image: "/static/images/kas2.jpg" },
+                        { name: "Aramana Hospital", rating: 4.3, type: "Private", address: "Near PVS, Kozhikode", phone: "0987654321", hours: "Open 24 hours", review: "Excellent services", image: "/static/images/kas3.jpg" },
+                    ];
+                    break;
+                // Add cases for other districts
+                // Add more cases for each district
+                default:
+                    hospitals = [];
+            }
+
+            // Display hospitals in the results section
+            hospitals.forEach(hospital => {
+                const hospitalHTML = `
+                    <div class="card mb-3">
+                        <div class="card-image" style="background-image: url('${hospital.image}')"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">${hospital.name}</h5>
+                            <p class="card-text">Rating: ${hospital.rating}</p>
+                            <p class="card-text">${hospital.type}</p>
+                            <p class="card-text">Address: ${hospital.address}</p>
+                            <p class="card-text">Phone: ${hospital.phone}</p>
+                            <p class="card-text">${hospital.hours}</p>
+                            <p class="card-text">${hospital.review}</p>
+                            <a href="${hospital.website}" class="btn btn-primary" target="_blank">Website</a>
+                            <a href="${hospital.map}" class="btn btn-secondary" target="_blank">Directions</a>
+                        </div>
+                    </div>
+                `;
+                document.getElementById("results").innerHTML += hospitalHTML;
+            });
+        }
+
+        // Event listener for district selection change
+        document.getElementById("districtSelect").addEventListener("change", function() {
+            const selectedDistrict = this.value;
+            fetchHospitals(selectedDistrict);
+        });
+
+        // Initially fetch hospitals for the default district (Kasaragod)
+        fetchHospitals("Kozhikode");
+    </script>
+</body>
+</html>
